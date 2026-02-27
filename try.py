@@ -1,29 +1,38 @@
+class Member:
+    def __init__(self, name):
+        self.name = name  # The "ID Card"
+        print(f"Member {self.name} registered.")
+
 class Hacker(Member):
     def __init__(self, name, role):
-        super().__init__(name)
+        # super() is the "Registration Clerk" 
+        # It sends the 'name' to the Member class (just like C++)
+        super().__init__(name) 
         self.role = role
-        self.skills = []
+        self.skills = []  # The "Backpack" (Vector)
 
-    def add_skill(self, skill_name):
-        self.skills.append(skill_name)
-        print(f"Added {skill_name}")
+    def add_skill(self, skill):
+        self.skills.append(skill) # Same as push_back
+        print(f"Added {skill}")
 
-    def remove_skill(self, skill_name):
-        # Traditional way would crash if skill isn't found
-        # Pro way: Try to remove, but don't panic if it's not there
-        try:
-            self.skills.remove(skill_name)
-            print(f"Removed {skill_name} from profile.")
-        except ValueError:
-            print(f"Error: {skill_name} not found in your skill list!")
+    def remove_skill(self, skill):
+        # In C++ we used 'find' and 'erase'. 
+        # In Python, we use 'if skill in list' and 'remove'.
+        if skill in self.skills:
+            self.skills.remove(skill)
+            print(f"Removed {skill}")
+        else:
+            print(f"Error: {skill} not found!")
 
-    def show_profile(self):
-        print(f"\n--- {self.name.upper()}'S HACKER PROFILE ---")
+    def show(self):
+        print(f"\n--- {self.name}'s Profile ---")
+        # Enumerate gives the index (i) and value (s)
         for i, s in enumerate(self.skills, start=1):
             print(f"{i}. {s}")
 
-# Testing your new logic
-user1 = Hacker("Terrance", "Logic Specialist")
-user1.add_skill("Python")
-user1.remove_skill("Java")  # This would normally crash, but now it's safe!
-user1.show_profile()
+# Execution
+h = Hacker("Terrance", "Logic Specialist")
+h.add_skill("Python")
+h.add_skill("C++")
+h.remove_skill("Java") # Shows error
+h.show()
