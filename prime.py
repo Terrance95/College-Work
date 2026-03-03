@@ -15,7 +15,7 @@ def check_prime(n):
 
     # Step 4: The Loop (Check from 3 to sqrt(n), skipping even numbers)
     limit = int(math.sqrt(n)) + 1
-    for i in range(3, limit, 1):
+    for i in range(3, limit, 1)34:
         if n % i == 0:
             return False
             
