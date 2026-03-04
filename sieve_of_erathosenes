@@ -1,0 +1,32 @@
+def sieve_of_eratosthenes(n):
+    # 1. Initialize our "is_prime" boolean list
+    # We assume all numbers from 0 to n are True (Prime)
+    is_prime = [True] * (n + 1)
+    is_prime[0] = is_prime[1] = False # 0 and 1 are not prime
+    
+    # 2. Start the filtering logic
+    p = 2
+    while (p * p <= n):
+        if is_prime[p]:
+            # Mark multiples of p as False starting from p*p
+            # We jump in steps of p (e.g., 4, 6, 8... or 9, 12, 15...)
+            for i in range(p * p, n + 1, p):
+                is_prime[i] = False
+        p += 1
+        
+    # 3. Create an empty list to store our final results
+    primes = []
+    
+    # 4. Loop through our boolean list and collect the 'True' indices
+    for p in range(2, n + 1):
+        if is_prime[p]:
+            primes.append(p) # Add the prime number to our list
+            
+    # 5. Return the finished list
+    return primes
+
+# --- How the Contest will test your code ---
+n_input = int(input("enter a number: "))
+result = sieve_of_eratosthenes(n_input)
+print(result) 
+# Output: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]

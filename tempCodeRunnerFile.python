@@ -1,0 +1,11 @@
+
+            primes.append(p) # Add the prime number to our list
+            
+    # 5. Return the finished list
+    return primes
+
+# --- How the Contest will test your code ---
+n_input = 30
+result = sieve_of_eratosthenes(n_input)
+print(result) 
+# Output: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
