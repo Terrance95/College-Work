@@ -1,23 +1,13 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
-# FIX: Ensure the triple quotes open and close properly
-st.markdown("""
-    <style>
-    .main {
-        background-color: #f0f2f6;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+st.title("HackSprint 2026: Day 1 Prep")
 
-st.title("HackSprint 2026: Team Strategy")
-st.write("Target: Top 10 Finalists [cite: 53]")
-
-# Test Data
+# Test Data for PDS Lab sync
 data = pd.DataFrame({
-    'Task': ['Install Tools', 'Learn Pandas', 'Hackathon Day 1'],
-    'Status': ['Completed', 'In Progress', 'Pending']
+    'Module': ['Python basics', 'Pandas', 'Streamlit'],
+    'Status': ['Reviewing', 'Pending', 'Active']
 })
 
 st.table(data)
+st.success("Environment Fixed. Commute ready.")
