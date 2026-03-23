@@ -1,0 +1,4 @@
+# Quick POST request snippet
+headers = {"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
+payload = {"data": "value"}
+res = requests.post("YOUR_URL_HERE", json=payload, headers=headers)

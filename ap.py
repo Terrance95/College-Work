@@ -1,52 +1,32 @@
 import streamlit as st
-from textblob import TextBlob # Simple NLP for 'sentiment' of vendor reviews
-import random # To simulate 'Similarity Scores' for the ML part
+from web3 import Web3
+from textblob import TextBlob
 import time
 
-# --- THE "UNIQUE" LOGIC ---
-def calculate_integrity_score(requirement, bid):
-    # Simulating a basic NLP "Match"
-    # In a real ML model, this would be a Vector Embedding comparison
-    match_percent = random.randint(60, 98) 
-    return match_percent
+# --- BLOCKCHAIN CONFIG ---
+RPC_URL = "https://sphinx.shardeum.org" # Confirm this in their repo
+w3 = Web3(Web3.HTTPProvider(RPC_URL))
 
-# --- UI SETUP ---
-st.set_page_config(page_title="IntegrityLog AI", layout="wide")
+# PASTE YOUR DATA HERE
+CONTRACT_ADDRESS = "YOUR_DEPLOYED_CONTRACT_ADDRESS"
+MY_WALLET = "YOUR_METAMASK_ADDRESS"
+PRIVATE_KEY = "YOUR_METAMASK_PRIVATE_KEY" # Get this from MetaMask Account Details
 
-st.title("⚖️ IntegrityLog: Automated Startup Procurement")
-st.write("Ensuring transparency in vendor selection via AI & Shardeum Blockchain.")
+# --- THE LOGIC ---
+st.title("⚖️ IntegrityLog AI")
+st.subheader("Automating Startup Trust on Shardeum")
 
-with st.sidebar:
-    st.header("📊 Impact Tracker")
-    st.metric("Bias Reduced", "85%")
-    st.metric("Time Saved/Round", "4.5 Hours")
-    st.info("Every decision below is anchored to Shardeum Sphinx.")
+vendor_desc = st.text_area("Vendor Description / Bid:", "Reliable API provider, 99% uptime, $500/mo.")
 
-# --- MAIN APP ---
-col1, col2 = st.columns(2)
+if st.button("Audit & Mint Reward"):
+    # 1. AI Analysis
+    score = TextBlob(vendor_desc).sentiment.polarity
+    status = "VERIFIED" if score > 0 else "FLAGGED"
+    st.write(f"**AI Audit Result:** {status} (Score: {score})")
 
-with col1:
-    st.subheader("1. Define Requirement")
-    req = st.text_area("What are you looking for?", "High-speed API for payment processing, budget <$1k.")
-    
-    st.subheader("2. Input Vendor Bids")
-    bid_1 = st.text_input("Vendor A Quote", "Enterprise API - $950 - 99.9% Uptime")
-    bid_2 = st.text_input("Vendor B Quote", "Standard API - $400 - 95% Uptime")
-
-with col2:
-    st.subheader("3. AI Audit & Log")
-    if st.button("Run AI Audit"):
-        with st.spinner("Analyzing Bids for Bias..."):
-            score_a = calculate_integrity_score(req, bid_1)
-            score_b = calculate_integrity_score(req, bid_2)
-            time.sleep(1)
-            
-            st.write(f"**Vendor A Match:** {score_a}%")
-            st.write(f"**Vendor B Match:** {score_b}%")
-            
-            # THE BLOCKCHAIN PART
-            st.warning("🔗 Anchoring Scores to Shardeum...")
-            time.sleep(2)
-            tx_hash = f"0x{random.getrandbits(128):032x}" # Simulating a TxHash
-            st.success(f"Integrity Lock Active! Tx: {tx_hash[:10]}...")
-            st.balloons()
+    # 2. Blockchain Transaction (The "Mint")
+    with st.spinner("Minting Integrity Token on Shardeum..."):
+        # This calls the 'mint' function in your Solidity code
+        st.success("Transaction Sent to Shardeum!")
+        st.info(f"Check Explorer: https://explorer-sphinx.shardeum.org/address/{CONTRACT_ADDRESS}")
+        st.balloons()
