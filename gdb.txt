@@ -1,0 +1,86 @@
+Breakpoint 1 at 0x140001548: file iterative_binarys.cpp, line 48.
+Breakpoint 2 at 0x14000145f: file iterative_binarys.cpp, line 6.
+Starting program: C:\Users\terra\OneDrive\Documents\GitHub\College-Work\it.exe 
+[New Thread 4932.0x5764]
+[New Thread 4932.0x138c]
+[New Thread 4932.0x1910]
+[New Thread 4932.0x23c8]
+
+Thread 1 hit Breakpoint 1, main () at iterative_binarys.cpp:48
+48	}
+19	    cout << "Enter n: ";
+20	    cin >> n;
+21	    int a[n];
+23	    cout << "Enter array elements: ";
+24	    for(int i = 0; i < n; i++) cin >> a[i];
+27	    selectionSort(a, n);
+
+Thread 1 hit Breakpoint 2, selectionSort (a=0x5ffe20, n=5) at iterative_binarys.cpp:6
+6	    for (int i = 0; i < n - 1; i++) {
+7	        int min_idx = i;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+11	        int temp = a[min_idx];
+12	        a[min_idx] = a[i];
+13	        a[i] = temp;
+6	    for (int i = 0; i < n - 1; i++) {
+7	        int min_idx = i;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+11	        int temp = a[min_idx];
+12	        a[min_idx] = a[i];
+13	        a[i] = temp;
+6	    for (int i = 0; i < n - 1; i++) {
+7	        int min_idx = i;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+11	        int temp = a[min_idx];
+12	        a[min_idx] = a[i];
+13	        a[i] = temp;
+6	    for (int i = 0; i < n - 1; i++) {
+7	        int min_idx = i;
+8	        for (int j = i + 1; j < n; j++) {
+9	            if (a[j] < a[min_idx]) min_idx = j;
+8	        for (int j = i + 1; j < n; j++) {
+11	        int temp = a[min_idx];
+12	        a[min_idx] = a[i];
+13	        a[i] = temp;
+6	    for (int i = 0; i < n - 1; i++) {
+15	}
+main () at iterative_binarys.cpp:29
+29	    cout << "Sorted array for searching: ";
+30	    for(int i = 0; i < n; i++) cout << a[i] << " ";
+31	    cout << endl;
+33	    cout << "Enter search element: ";
+34	    cin >> key;
+36	    int low = 0, high = n - 1;
+37	    while(low <= high) {
+38	        int mid = low + (high - low) / 2;
+39	        if(a[mid] == key) {
+43	        else if(a[mid] < key) low = mid + 1;
+37	    while(low <= high) {
+38	        int mid = low + (high - low) / 2;
+39	        if(a[mid] == key) {
+40	            cout << "Element found at index " << mid << " (in sorted array)" << endl;
+41	            return 0;
+48	}
+__tmainCRTStartup () at D:/W/B/src/mingw-w64/mingw-w64-crt/crt/crtexe.c:237
+warning: 237	D:/W/B/src/mingw-w64/mingw-w64-crt/crt/crtexe.c: No such file or directory
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
